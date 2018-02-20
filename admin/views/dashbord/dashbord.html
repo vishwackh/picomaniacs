@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" style="    color: #fff;">PICOMANIACS ADMIN</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard" ng-class="{active:$state.includes('dashbord.home')}">
+                <a class="nav-link" ui-sref="dashbord.home">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="homePage" ng-class="{active:$state.includes('dashbord.homePage')}">
+                <a class="nav-link" ui-sref="dashbord.homePage">
+                    <i class="fa fa-fw fa-picture-o"></i>
+                    <span class="nav-link-text">Home page Photos</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="preWedding" ng-class="{active:$state.includes('dashbord.preWedding')}">
+                <a class="nav-link" ui-sref="dashbord.preWedding">
+                    <i class="fa fa-fw fa-picture-o"></i>
+                    <span class="nav-link-text">Pre wedding photos</span>
+                </a>
+            </li>
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="wedding" ng-class="{active:$state.includes('dashbord.wedding')}">
+                <a class="nav-link" ui-sref="dashbord.wedding">
+                    <i class="fa fa-fw fa-picture-o"></i>
+                    <span class="nav-link-text">Wedding photos</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="postWedding" ng-class="{active:$state.includes('dashbord.postWedding')}">
+                <a class="nav-link" ui-sref="dashbord.postWedding">
+                    <i class="fa fa-fw fa-picture-o"></i>
+                    <span class="nav-link-text">Post wedding photos</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="babyPhoto" ng-class="{active:$state.includes('dashbord.babyPhoto')}">
+                <a class="nav-link" ui-sref="dashbord.babyPhoto">
+                    <i class="fa fa-fw fa-picture-o"></i>
+                    <span class="nav-link-text">Baby photos</span>
+                </a>
+            </li>                        
+        </ul>
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">             
+            <li class="nav-item">
+                <a class="nav-link" ng-click="logout()">
+                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div ui-view></div>
+    </div>
+</div>
+
+
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+</a>
+<!-- Logout Modal-->
+ 

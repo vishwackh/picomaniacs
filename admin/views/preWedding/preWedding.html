@@ -1,0 +1,123 @@
+<ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a ui-sref="dashbord.home">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Pre wedding photos</li>
+    </ol>
+    <div class="container">
+        <div class="card card-login mx-auto mt-5">
+            <div class="card-header">Add New Image</div>
+            <div class="card-body">
+                <form name="userForm" novalidate>
+                  
+                    <div class="form-group" ng-class="{ 'has-error' : !userForm.catgoryname.$valid && (userForm.catgoryname.$dirty || submitted)}">
+                        <select name="catgoryname" class="form-control" focus ng-model="ldata.name" 
+                            ng-required="true">
+                            <option value=''>Select Page</option>
+                            <option value='page 1'>Page 1</option>
+                            <option value='page 2'>Page 2</option>
+                            <option value='page 3'>Page 3</option>
+                        </select>
+                        <p ng-show="userForm.catgoryname.$error.required && (userForm.catgoryname.$dirty || userForm.$submitted)" class="help-block">Select Catogory.</p>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && (userForm.name.$dirty || userForm.$submitted),'has-success' : userForm.name.$valid && (userForm.name.$dirty || submitted)}">
+ 
+                         
+                        <input class="btn btn-primary" id="inputImage" type="file" accept="image/*" ng-model="imageList1" image="imageList1" resize-max-height="800"
+                        resize-max-width="800" resize-quality="0.7" resize-type="image/jpg" multiple="multiple" ng-image-compress>
+
+                        <p ng-show="userForm.name.$error.required && (userForm.name.$dirty || userForm.$submitted)" class="help-block">URL is required.</p>
+                    </div>
+                    <button type="submit" class="btn btn-primary" ng-click="userForm.$submitted=true;addImage(ldata,userForm)">Upload Image</button>
+                    <div class="clearfix">&nbsp;</div>
+                </form>
+ 
+               
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">&nbsp;</div>
+    <div class="container">
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-table"></i> Images Table</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>SL No</th>
+                                <th>Name</th>
+                                <th>ImageName</th>
+                                <th>Created Date</th>
+                                <th>View</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="cat in imageList ">
+                                <td>{{$index +1}}</td>
+                                <td>{{cat.name}}</td>
+                                <td>{{cat.url}}</td>
+                                <td>{{cat.createdDate |timeago}}</td>
+                                <td>
+                                    <a class="btn btn-success" ng-click="viewImage(cat)">
+                                        <em class="fa fa-eye"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger" ng-click="deleteImage(cat)">
+                                        <em class="fa fa-trash"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="deletemodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirm?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">You Want to delete
+                    <span class="help-block">{{delobj.name}} </span> image</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                    <a class="btn btn-primary" ng-click="deleteImagerecord(delobj)">Yes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="viewmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Watch Video</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                    <img ng-src="{{image}}" class="img-responsive" style="max-width: 100%;" alt="image">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" type="button" data-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
